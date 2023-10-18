@@ -39,7 +39,7 @@ function EditValue(elem)
     // Створюмо форму для редагування групи
     const id = elem.getAttribute('data-id');
     let edit_form =  document.createElement("div");
-    edit_form.innerHTML = `<tr><form action="/groups" method="post" onsubmit="return false;">
+    edit_form.innerHTML = `<tr><form action="/groups" class="dynamic" method="post" onsubmit="return false;">
     <td><input type ="text" class="form-control Name" name="Name"></td>
     <td><input type ="text" class="form-control Description" name="Descriptions"></td>
     <td><input type="hidden" name="Id" value = ${id}></td>

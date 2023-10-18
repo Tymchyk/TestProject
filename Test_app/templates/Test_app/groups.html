@@ -33,8 +33,12 @@
         <td>{{group.Name}}</td>
         <td>{{group.Descriptions}}</td>
         <td id="edit-{{group.id}}"><button class="btn btn-warning edit" data-id="{{group.id}}">Edit</button>
-        <button class="btn btn-danger delete" data-id="{{group.id}}">Delete</button></td>
-
+        
+        {%if group.enable == False %}
+            <button class="btn btn-danger disabled delete" data-id="{{group.id}}">Delete</button></td>
+        {%else%}
+            <button class="btn btn-danger delete" data-id="{{group.id}}">Delete</button></td>
+        {%endif%}
     </tr>
     {%endfor%}
 </div>

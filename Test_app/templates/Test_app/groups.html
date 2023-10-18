@@ -1,0 +1,41 @@
+{% extends "Test_app/layout.html" %}
+{% load static %}
+
+
+{%block script%}
+    <link rel ="stylesheet" href = "{% static 'css/groups.css'%}">
+    <script src = "{% static 'js/groups.js'%}"></script>
+{%endblock%}
+
+{%block body%}
+<div class="add_form">
+    <form action = "{% url 'groups' %}" method ="post">
+        {%csrf_token%}
+        {{form}}
+        <button class ="btn btn-primary submit"> Submit</button>
+    </form>
+</div>
+<button class=" btn btn-primary addGroup">Add group</button>
+<div class="main">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col"><h3>Id</h3></th>
+                <th scope="col"><h3>Name</h3></th>
+                <th scope="col"><h3>Description</h3></th>
+                <th scope="col"><h3>Actions</h3></th>
+                
+            </tr>
+        </thead>
+    {% for group in groups%}
+    <tr>
+        <td> {{group.id}}</td>
+        <td>{{group.Name}}</td>
+        <td>{{group.Descriptions}}</td>
+        <td id="edit-{{group.id}}"><button class="btn btn-warning edit" data-id="{{group.id}}">Edit</button>
+        <button class="btn btn-danger delete" data-id="{{group.id}}">Delete</button></td>
+
+    </tr>
+    {%endfor%}
+</div>
+{%endblock%}
